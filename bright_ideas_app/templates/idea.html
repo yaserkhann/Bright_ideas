@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Ideas</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Style/style.css' %}">
+</head>
+
+<body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="container">
+        <nav>
+            <h1>Hi, {{user.name}}</h1>
+            <a href="logout">Logout</a>
+        </nav>
+        <div class="form">
+            <form action="/post_idea" method="POST">
+                {% csrf_token %}
+                <div class="idea">
+                    <input type="text" name="idea" id="idea" class="form-control"
+                        placeholder="post something witty here..." required>
+                    <a href="" id="idea"><button class="btn btn-primary">Idea</button></a>
+                </div>
+            </form>
+        </div>
+        <div class="post-wrap">
+            {% for idea in ideas %}
+            <div class="post">
+                <div class="row">
+                    <div class="col-md-2"><a href="/user/{{idea.poster.id}}">{{idea.poster.alias}}</a> Says:</div>
+                    <div class="col-md-6" id="post">
+                        <p>{{idea.post}}</p>
+                    </div>
+                    {% if idea.poster.id == user.id %}
+                    <div class="delete">
+                        <a href="/delete/{{idea.id}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="edit">
+                        <a href="/edit/{{idea.id}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                            </svg>
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="row offset-2">
+                    <div class="col-md-1"><a href="/add_like/{{idea.id}}">Like</a></div>
+                    <div class="col-md-4"><a href="/post/{{idea.id}}">{{idea.user_likes.count}}</a> people like this
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

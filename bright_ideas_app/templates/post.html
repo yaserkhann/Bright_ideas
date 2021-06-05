@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Style/style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="/logout">Logout</a> &ensp;&ensp;<a href="/bright_ideas">BrightIdeas</a>
+        </div>
+        <div class="post-wrap">
+            <div class="post">
+                <div class="row">
+                    <div class="col-md-2"><a href="/user/{{idea.poster.id}}">{{idea.poster.alias}}</a> Says:</div>
+                    <div class="col-md-6" id="post">
+                        <p>{{idea.post}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="likes">
+            <p><strong>People who liked this post:</strong></p>
+            <table class="table table-bordered table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Alias</th>
+                        <th scope="col">Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in idea.user_likes.all %}
+                    <tr>
+                        <td><a href="">{{user.alias}}</td>
+                        <td>{{user.name}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

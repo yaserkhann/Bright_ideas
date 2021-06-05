@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Style/style.css' %}" />
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <h1>Hi {{user.name}}</h1>
+            <a href="/logout">Logout</a>
+        </nav>
+        <div class="form">
+            <form action="/update_idea/{{idea.id}}" method="POST">
+                {% csrf_token %}
+                <div class="idea">
+                    <input type="text" name="idea" id="idea" class="form-control" value="{{idea.post}}" required>
+                    <a href="" id="idea"><button class="btn btn-primary">UpdateIdea</button></a>
+                </div>
+            </form>
+        </div>
+        <div class="update_info">
+            <form action="/update_user/{{user.id}}" method="post">
+                {% csrf_token %}
+                <h2>Edit Your acount:</h2>
+                <div class="form-group">
+                    <label for="name"></label>Name:</label>
+                    <input type="text" name="name" id="name" class="form-control" value="{{user.name}}">
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Alias:</label>
+                    <input type="text" name="alias" id="alias" class="form-control" value="{{user.alias}}">
+                </div>
+                <button class="btn btn-primary">Update</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

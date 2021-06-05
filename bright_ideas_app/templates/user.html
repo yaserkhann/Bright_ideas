@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Style/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="/logout">logout</a> &ensp;&ensp;<a href="/bright_ideas">BrightIdeas</a>
+        </div>
+        <div class="user_info">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Name:&ensp;{{user.name}}</strong></p>
+                    <p><strong>Alias:&ensp;{{user.alias}}</strong></p>
+                    <p><strong>Email:&ensp;{{user.email}}</strong></p>
+                </div>
+            </div>
+        </div>
+        <div class="user_activity">
+            <p><strong>Total Number of posts:&ensp;{{user.user_ideas.count}}</strong></p>
+            <p><strong>Total Number of likes:&ensp;{{user.user_likes.count}}</strong></p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

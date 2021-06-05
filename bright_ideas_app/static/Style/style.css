@@ -1,0 +1,102 @@
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#log-reg {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#log-reg>section {
+    width: 40%;
+    margin: 0 2em;
+    margin-bottom: 5%;
+
+}
+
+ul.messages {
+    list-style: none;
+}
+
+li.error {
+    color: firebrick;
+}
+
+li.success {
+    color: forestgreen;
+}
+
+body {
+    background-color: rgb(189, 196, 189);
+}
+
+nav {
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.idea {
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-around;
+}
+
+#idea {
+    margin-left: 2em;
+}
+
+.post {
+    /* border: 2px solid red; */
+    margin: 2em;
+}
+
+.row {
+    display: flex;
+    justify-content: start;
+}
+
+#post {
+    background-color: black;
+    color: white;
+    font-size: larger;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row-reverse;
+    /* border: brown solid 2px; */
+    margin: 2em;
+    padding-right: 2em;
+    font-size: large;
+}
+
+.user_info {
+    color: goldenrod;
+    font-size: x-large;
+    border-bottom: 4px solid black;
+}
+
+.user_activity {
+    margin-top: 2em;
+    font-size: large;
+}
+
+.likes table {
+    width: 50%;
+}
+
+.likes {
+    margin-top: 4em;
+}
+
+.update_info {
+    width: 50%;
+    margin: 4em;
+}
+h1 {
+    color:rgb(14, 109, 62);
+    font-family: 'Brush Script MT', cursive;
+    
+}
